@@ -11,11 +11,17 @@ const EventPosterPage: React.FC = () => {
   const [time, setTime] = useState('');
   const [venue, setVenue] = useState('');
   const [description, setDescription] = useState('');
-  const [image, setImage] = useState<File | null>(null);
+  const [stats, setStaus] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     // Add event poster generation logic here
+    const response = await fetch('http://localhost:8081/v1/events/:user_id', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
   };
 
   return (

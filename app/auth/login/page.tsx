@@ -3,14 +3,33 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import styles from '../Auth.module.css';
+// import { useRouter } from 'next/router';
 
 const LoginPage: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  // const router = useRouter(); 
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Add login logic here
+    
+    try {
+      const response = await fetch('http://localhost:8081/v1/authenticate/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: email, password: password }), // stringify the object
+      });
+
+      if (response.ok) {
+        // router.push('/dashboard'); // redirect upon successful login
+      } else {
+        console.error('Invalid credentials');
+      }
+    } catch (error) {
+      console.error('Error occurred:', error);
+    }
   };
 
   return (
