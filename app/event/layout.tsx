@@ -1,7 +1,5 @@
 import { Metadata } from "next";
-import Navbar from "@/app/components/navbar"; // Assuming this is the correct path to your Navbar component
-import { ReactNode } from "react";
-// import styles from "./DashboardLayout.module.css"; // Import CSS file for styling
+import Navbar from "@/app/components/navbar";
 
 export const metadata: Metadata = {
   title: "Dashboard",

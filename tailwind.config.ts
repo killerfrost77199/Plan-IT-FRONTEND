@@ -15,6 +15,11 @@ const config: Config = {
       },
     },
   },
+  fontSize: {
+    sm: '0.5rem',
+    base: '1rem',
+  },
   plugins: [],
 };
+
 export default config;
