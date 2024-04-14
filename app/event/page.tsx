@@ -4,6 +4,7 @@ import Link from 'next/link';
 
 const Event: React.FC = () => {
   const [events, setEvents] = useState<any[]>([]);
+  const [poster, setPosterUrl] = useState(null);
 
   useEffect(() => {
     fetchEvents();
@@ -26,10 +27,22 @@ const Event: React.FC = () => {
     return status === 1 ? 'Upcoming' : 'Completed';
   };
 
-  const getIdForposter = (status: any) => {
-    return status === 1 ? 'Post' : 'No Post';
-  };
+  const getIdForposter = async (id: any) => {
+    try {
+      const posterResponse = await fetch(`http://localhost:8081/v1/poster/${id}`);
+      const data = await posterResponse.json();
+      console.log(data.data);
+      const link = document.createElement('a');
+      link.href = data.data;
+      link.setAttribute('download', 'poster.pdf');
+      document.body.appendChild(link);
 
+      link.click();
+
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
   return (
     <div className="container mx-auto my-10 p-4 bg-white rounded-lg shadow-lg">
       <div className="flex justify-between items-center mb-4">
@@ -71,7 +84,7 @@ const Event: React.FC = () => {
                 </button>
               </td>
               <td className="border p-1 text-center">
-                <button className="rounded-full px-2 py-1 bg-blue-500 text-white" onClick={() => getIdForposter(event.status)} style={{ fontSize:'.5rem' }}>
+                <button className="rounded-full px-2 py-1 bg-blue-500 text-white" onClick={() => getIdForposter(event.event_id)} style={{ fontSize:'.5rem' }}>
                   Generate
                 </button>
               </td>
