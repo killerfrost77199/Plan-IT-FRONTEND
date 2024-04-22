@@ -32,7 +32,7 @@ const Navbar = () => {
             target="_blank"
             rel="noreferrer"
           >
-            Logo
+            Plan(IT)
           </a>
         </h1>
       </div>

@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Navbar from "@/app/components/navbar";
 
 export const metadata: Metadata = {
-  title: "Events",
+  title: "Guest Lecture",
   description: "Plan(IT)",
 };
 

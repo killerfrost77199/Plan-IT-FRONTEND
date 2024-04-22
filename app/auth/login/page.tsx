@@ -3,12 +3,13 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import styles from '../Auth.module.css';
+import { useRouter } from 'next/navigation';
 // import { useRouter } from 'next/router';
 
 const LoginPage: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  // const router = useRouter(); 
+  const router = useRouter(); 
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -23,7 +24,7 @@ const LoginPage: React.FC = () => {
       });
 
       if (response.ok) {
-        // router.push('/dashboard'); // redirect upon successful login
+        router.push('/event'); 
       } else {
         console.error('Invalid credentials');
       }
