@@ -31,13 +31,9 @@ const Dashboard: React.FC<Props> = () => {
     }, []);
 
     return (
-        <div style={{ height: '90vh' }}>
-            <h3>dashboard</h3>
-            <h3>dashboard1</h3>
-            <h3>dashboard2</h3>
-            <h3>dashboard3</h3>
-            <h3>dashboard4</h3>
-        </div>
+      <div className="h-screen justify-center items-center flex bg-gradient-to-r from-purple-700 to-blue-900 shadow-2xl">
+
+      </div>
     );
 };
 
